@@ -23,7 +23,7 @@ jobs:
       - name: Build and Push Backend
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: ./backend/server
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/my-fruit-backend:latest
 
