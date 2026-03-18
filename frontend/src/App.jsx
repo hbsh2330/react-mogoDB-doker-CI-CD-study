@@ -15,7 +15,7 @@ export default function App() {
 
   const filteredProducts = products.filter(p => p.name.includes(searchText));
 
-  // --- [2. 초기 데이터 로드] ---
+  // --- [2. 초기 데이터 로드] --- 수정됨
   useEffect(() => {
     // 상품 목록 로드
     api.get('/products')
