@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # 1. 데이터베이스 (MongoDB)
+  db:
+    image: mongo:latest
+    ports:
+      - "27018:27017" 
+    volumes:
+      - mongo-data:/data/db
+
+  # 2. 백엔드 (Node.js)
+  backend:
+    build: ./backend/server # 백엔드 폴더 경로
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://db:27017/ShopDB
+    depends_on:
+      - db
+
+  # 3. 프론트엔드 (React)
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:5173"  # 외부(내 컴퓨터) 3000번을 내부(도커) 5173번으로 연결
+    stdin_open: true # 👈 이 줄 추가 (리액트가 꺼지지 않게 함)
+    tty: true        # 👈 이 줄 추가
+    environment:
+      - CHOKIDAR_USEPOLLING=true # 파일 변경 감지 활성화
+
+volumes:
+  mongo-data:
