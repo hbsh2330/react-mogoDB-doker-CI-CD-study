@@ -5,29 +5,35 @@ services:
   db:
     image: mongo:latest
     ports:
-      - "27018:27017" 
+      - "27017:27017" # 외부 포트도 기본값인 27017로 맞추는 게 관리하기 편해요
     volumes:
       - mongo-data:/data/db
 
   # 2. 백엔드 (Node.js)
   backend:
-    build: ./backend/server # 백엔드 폴더 경로
+    # build 대신 깃허브 액션이 올린 이미지를 사용합니다
+    image: hbsh2330/my-fruit-backend:latest
     ports:
       - "5000:5000"
     environment:
+      # db 서비스 이름을 호스트로 사용 (중요!)
       - MONGO_URI=mongodb://db:27017/ShopDB
     depends_on:
       - db
 
   # 3. 프론트엔드 (React)
   frontend:
-    build: ./frontend
+    # build 대신 깃허브 액션이 올린 이미지를 사용합니다
+    image: hbsh2330/my-fruit-frontend:latest
     ports:
-      - "3000:5173"  # 외부(내 컴퓨터) 3000번을 내부(도커) 5173번으로 연결
-    stdin_open: true # 👈 이 줄 추가 (리액트가 꺼지지 않게 함)
-    tty: true        # 👈 이 줄 추가
+      - "3000:5173"  # Vite 사용 중이시라면 5173이 맞습니다
+    # 배포용 이미지라면 아래 설정들은 빼도 무관하지만, 넣어둬도 상관없습니다
+    stdin_open: true 
+    tty: true
     environment:
-      - CHOKIDAR_USEPOLLING=true # 파일 변경 감지 활성화
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
 
 volumes:
   mongo-data:
