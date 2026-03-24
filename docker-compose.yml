@@ -12,7 +12,7 @@ services:
   # 2. 백엔드 (Node.js)
   backend-node:
     # build 대신 깃허브 액션이 올린 이미지를 사용합니다
-    image: hbsh2330/my-fruit-backend:latest
+    image: hbsh2330/my-fruit-node-backend:latest
     ports:
       - "5000:5000"
     environment:
@@ -46,4 +46,4 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     depends_on:
-      - backend
+      - backend-spring
