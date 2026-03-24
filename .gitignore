@@ -2,6 +2,7 @@
 node_modules/
 dist/
 build/
+data/
 
 # Environment (가장 중요!)
 .env
@@ -12,3 +13,4 @@ build/
 .vscode/
 .idea/
 *.log
+/.metadata/

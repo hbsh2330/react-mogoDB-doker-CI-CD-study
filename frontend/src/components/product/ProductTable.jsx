@@ -8,7 +8,7 @@ export default function ProductTable({ products, onBuyClick, onAddClick }) {
       </thead>
       <tbody>
         {products.map((product) => (
-          <tr key={product.name}>
+          <tr key={product._id}>
             <td>{product.name}</td>
             <td>{product.price.toLocaleString()}원</td>
             <td style={{ color: product.stock === 0 ? 'red' : 'black' }}>
