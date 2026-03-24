@@ -1,5 +1,5 @@
 # 1. 자바 17 환경 설정 (사용 중인 JDK 버전에 맞춤)
-FROM openjdk:17-jdk-slim
+FROM amazoncorretto:17-alpine
 
 # 2. 컨테이너 내부 작업 디렉토리 설정
 WORKDIR /app
