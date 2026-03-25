@@ -20,8 +20,8 @@ import com.study.backendSpring.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/users") // 👈 여기서 http://localhost:5000/api/users 가 결정됩니다.
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api/users") // 👈 여기서 http://43.201.50.100:5000/api/users 가 결정됩니다.
+@CrossOrigin(origins = "http://43.201.50.100:5173")
 @RequiredArgsConstructor
 public class UserController {
 

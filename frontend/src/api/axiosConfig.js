@@ -6,7 +6,7 @@ const isDevelopment = import.meta.env.DEV;
 
 const baseURL = isDevelopment 
   ? 'http://localhost:5000/api'       // 로컬 개발 시 (스프링 부트)
-  : 'http://43.201.48.205:5000/api';  // 배포 후 (실제 서버)
+  : 'http://43.201.50.100:5000/api';  // 배포 후 (실제 서버)
 
 const instance = axios.create({
   baseURL: baseURL
