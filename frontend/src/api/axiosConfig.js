@@ -10,6 +10,8 @@ const baseURL = (hostname === 'localhost' || hostname === '127.0.0.1')
   ? 'http://localhost:5000/api'           // 로컬 개발 환경
   : `http://${hostname}:5000/api`;       // AWS 배포 환경 (자동으로 현재 IP 사용)
   
+  console.log("현재 API 서버 주소:", baseURL);
+
 const instance = axios.create({
   baseURL: baseURL
 });
