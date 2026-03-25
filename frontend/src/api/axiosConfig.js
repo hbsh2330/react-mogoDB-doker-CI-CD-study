@@ -1,13 +1,15 @@
 // frontend/src/api/axiosConfig.js
 import axios from 'axios';
 
-// 현재 실행 환경이 'development'(npm start)인지 확인 배포시 (npm run build) 'production'로 변경
-const isDevelopment = import.meta.env.DEV;
+// 1. 현재 브라우저의 접속 주소를 자동으로 가져옵니다 (가장 확실한 방법)
+const hostname = window.location.hostname;
 
-const baseURL = isDevelopment 
-  ? 'http://localhost:5000/api'       // 로컬 개발 시 (스프링 부트)
-  : 'http://43.201.50.100:5000/api';  // 배포 후 (실제 서버)
-
+// 2. 접속한 주소가 localhost면 로컬 백엔드를, 아니면 AWS IP를 사용합니다.
+// 이렇게 하면 스프링이든 노드든 포트 5000번만 맞으면 똑같이 작동합니다.
+const baseURL = (hostname === 'localhost' || hostname === '127.0.0.1')
+  ? 'http://localhost:5000/api'           // 로컬 개발 환경
+  : `http://${hostname}:5000/api`;       // AWS 배포 환경 (자동으로 현재 IP 사용)
+  
 const instance = axios.create({
   baseURL: baseURL
 });
