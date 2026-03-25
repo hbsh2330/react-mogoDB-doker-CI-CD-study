@@ -1,14 +1,7 @@
 // frontend/src/api/axiosConfig.js
 import axios from 'axios';
 
-// 1. 현재 브라우저의 접속 주소를 자동으로 가져옵니다 (가장 확실한 방법)
-const hostname = window.location.hostname;
-
-// 2. 접속한 주소가 localhost면 로컬 백엔드를, 아니면 AWS IP를 사용합니다.
-// 이렇게 하면 스프링이든 노드든 포트 5000번만 맞으면 똑같이 작동합니다.
-const baseURL = '43.201.50.100'
-  
-  console.log("현재 API 서버 주소:", baseURL);
+const baseURL = 'http://43.201.50.100:5000/api';  // 배포 후 (실제 서버)
 
 const instance = axios.create({
   baseURL: baseURL
