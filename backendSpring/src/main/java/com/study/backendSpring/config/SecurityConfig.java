@@ -31,6 +31,7 @@ public class SecurityConfig {
             // 1. CORS 설정 추가 (모든 경로, 모든 메서드 허용)
             .cors(cors -> cors.configurationSource(request -> {
                 var config = new org.springframework.web.cors.CorsConfiguration();
+                config.setAllowedOrigins(java.util.List.of("http://43.201.50.100:3000")); // 리액트 주소
                 config.setAllowedOrigins(java.util.List.of("http://43.201.50.100:5173")); // 리액트 주소
                 config.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(java.util.List.of("*"));
