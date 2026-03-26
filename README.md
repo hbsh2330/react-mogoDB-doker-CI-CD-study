@@ -57,7 +57,7 @@ One Frontend, Dual Engines" – 동일한 UI 환경에서 Java/Spring과 Node.js
 
 ---
 
-## 🧭 향후 목표: Cloud Native로의 도약
+## 🧭 향후 목표: Cloud Native로 수정
 
 컨테이너 기술의 기초를 다진 경험을 바탕으로, 다중 컨테이너의 효율적 관리와 무중단 서비스를 위한 쿠버네티스(Kubernetes) 도입 및 학습 예정.
 
